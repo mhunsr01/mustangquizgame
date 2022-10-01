@@ -1,0 +1,77 @@
+<!-- GIVEN I am taking a code quiz
+WHEN I click the start button
+THEN a timer starts and I am presented with a question
+WHEN I answer a question
+THEN I am presented with another question
+WHEN I answer a question incorrectly
+THEN time is subtracted from the clock
+WHEN all questions are answered or the timer reaches 0
+THEN the game is over
+WHEN the game is over
+THEN I can save my initials and my score 
+
+logic
+
+Make start button- ask for initials
+
+Start timer 
+60 seconds count down
+wrong answer removes ten seconds
+
+list questions
+boolean false questions prompt time loss
+boolean true is added to final score
+
+add correct answers at end of timer or completion of questions
+
+present score and high score
+
+save high score in local storage and present with intials at page load
+
+provide a retry button
+
+-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">   
+</head>
+
+<body>
+    <h1>Take a Mustang Quiz</h1>
+    
+    <div class="panel">
+        <button id="startbtn">Start Quiz</button>
+        <p>Time left:<span id="time"></span></p>
+        <div class="result">
+  
+        </div>
+        <div class="question-container" id="question">
+            Question goes here.
+        </div>
+        <div class="option-container">
+            <button class="option" onclick="" id="op1" >option1</button>
+      
+            <button class="option" id="op2" >option2</button>
+      
+            <button class="option" id="op3">option3</button>
+      
+            <button class="option" id="op4">option4</button>
+        </div>
+        <div class="navigation">
+            <button class="evaluate">Evaluate</button>
+            <button class="next">Next</button>
+        
+        </div>
+    </div>
+    <script src="./assets/script.js"></script>
+</body>
+</html>
