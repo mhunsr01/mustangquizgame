@@ -26,11 +26,45 @@ function startTimer(duration, display) {
       seconds = seconds < 10 ? "0" + seconds : seconds;
       display.textContent = ":" + seconds;
 
-      if (--timer < 0) {
+      if (--timer < 1) {
         timer = duration;
       }
     }, 1000);
+clearInterval(startTimer)
   }
+
+  function countdown() {
+    var timeLeft = 5;
+  
+    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+    var timeInterval = setInterval(function () {
+      // As long as the `timeLeft` is greater than 1
+      if (timeLeft > 1) {
+        // Set the `textContent` of `timerEl` to show the remaining seconds
+        timerEl.textContent = timeLeft + ' seconds remaining';
+        // Decrement `timeLeft` by 1
+        timeLeft--;
+      } else if (timeLeft === 1) {
+        // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+        timerEl.textContent = timeLeft + ' second remaining';
+        timeLeft--;
+      } else {
+        // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+        timerEl.textContent = '';
+        // Use `clearInterval()` to stop the timer
+        clearInterval(timeInterval);
+        // Call the `displayMessage()` function
+        displayMessage();
+      }
+    }, 1000);
+  }
+
+
+
+
+
+
+
   var startbtn = document.querySelector("#startbtn")
 
   startbtn.addEventListener("click", timer)
@@ -39,7 +73,8 @@ function startTimer(duration, display) {
     var sixtyseconds = 60,
     display = document.querySelector('#time');
     startTimer(sixtyseconds, display);
-  };
+     }
+
 
 const Questions = [{
     id: 0,
@@ -241,7 +276,13 @@ evaluate[0].addEventListener("click", () => {
 })
 }
 
-if (start) {
+function endquiz () {
+    clearInterval(timer);
+
+
+}
+    
+    if (start) {
 iterate("0");
 }
 
