@@ -17,53 +17,18 @@
 // }}
 
 // setTimeout("CheckTime()",60000);
+var timeEl = document.querySelector('#time');
 
-
-function startTimer(duration, display) {
-    var timer = duration, seconds;
-    setInterval(function () {
-      seconds = parseInt(timer % 60, 10);
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-      display.textContent = ":" + seconds;
-
-      if (--timer < 1) {
-        timer = duration;
-      }
-    }, 1000);
-clearInterval(startTimer)
+function startTimer () {
+var count = 60;
+var interval = setInterval(function(){
+    timeEl.textContent = count
+    count--;
+  if (count <= 0){
+    clearInterval(interval); // Stopping the counter when reaching 0.
   }
-
-  function countdown() {
-    var timeLeft = 5;
-  
-    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-    var timeInterval = setInterval(function () {
-      // As long as the `timeLeft` is greater than 1
-      if (timeLeft > 1) {
-        // Set the `textContent` of `timerEl` to show the remaining seconds
-        timerEl.textContent = timeLeft + ' seconds remaining';
-        // Decrement `timeLeft` by 1
-        timeLeft--;
-      } else if (timeLeft === 1) {
-        // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-        timerEl.textContent = timeLeft + ' second remaining';
-        timeLeft--;
-      } else {
-        // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-        timerEl.textContent = '';
-        // Use `clearInterval()` to stop the timer
-        clearInterval(timeInterval);
-        // Call the `displayMessage()` function
-        displayMessage();
-      }
-    }, 1000);
-  }
-
-
-
-
-
-
+}, 1000);
+}
 
   var startbtn = document.querySelector("#startbtn")
 
@@ -75,7 +40,6 @@ clearInterval(startTimer)
     startTimer(sixtyseconds, display);
      }
 
-
 const Questions = [{
     id: 0,
     q: "What year was the Ford Mustang revealed?",
@@ -84,7 +48,6 @@ const Questions = [{
         { text: "1964", isCorrect: true },
         { text: "1963", isCorrect: false }
     ]
-
 },
 {
     id: 1,
@@ -94,7 +57,6 @@ const Questions = [{
         { text: "5", isCorrect: false },
         { text: "2", isCorrect: true }
     ]
-
 },
 {
     id: 2,
@@ -104,7 +66,6 @@ const Questions = [{
         { text: "GT500", isCorrect: true },
         { text: "GT350", isCorrect: false }
     ]
-
 },
 {
     id: 3,
@@ -114,7 +75,6 @@ const Questions = [{
         { text: "GT500", isCorrect: true },
         { text: "GT350", isCorrect: false }
     ]
-
 },
 {
     id: 4,
@@ -124,7 +84,6 @@ const Questions = [{
         { text: "New York", isCorrect: true },
         { text: "Paris", isCorrect: false }
     ]
-
 },
 {   
     id: 5,
@@ -134,7 +93,6 @@ const Questions = [{
         { text: "all", isCorrect: true },
         { text: "black", isCorrect: false }
     ]  
-
 },
 {
     id: 6,
@@ -144,7 +102,6 @@ const Questions = [{
         { text: "1-4", isCorrect: true },
         { text: "3 in the trunk", isCorrect: false }
     ]
-
 },
 {
     id: 7,
@@ -154,7 +111,6 @@ const Questions = [{
         { text: "None!", isCorrect: true },
         { text: "Audi", isCorrect: false }
     ]
-
 },
 {
     id: 8,
@@ -164,7 +120,6 @@ const Questions = [{
         { text: "All of them!", isCorrect: true },
         { text: "Hatchback", isCorrect: false }
     ]
-
 },
 {
     id: 9,
@@ -174,7 +129,6 @@ const Questions = [{
         { text: "All plus electric", isCorrect: true },
         { text: "8", isCorrect: false }
     ]
-
 },
 {
     id: 10,
@@ -184,7 +138,6 @@ const Questions = [{
         { text: "Everyone", isCorrect: true },
         { text: "No one", isCorrect: false }
     ]
-
 }
 ]
 
@@ -299,4 +252,3 @@ start = false;
 }
 
 })
-
