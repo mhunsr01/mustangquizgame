@@ -1,31 +1,35 @@
-
-// var startQuiz = document.querySelector(".startrbtn");
-// var total_seconds = 30*1;
-// var c_minutes = parseInt(total_seconds/60);
-// var c_seconds = parseInt(total_seconds%60);
-
-// function CheckTime(){
-// document.getElementById("quiz-time-left").innerHTML
-// = 'Time Left: ' + c_seconds + ' seconds ' ;
-
-// if(total_seconds <=0){
-// setTimeout('document.quiz.submit()',1);
-// } else {
-// total_seconds = total_seconds -1;
-// c_seconds = parseInt(total_seconds%60);
-// setTimeout("CheckTime()",1000);
-// }}
-
-// setTimeout("CheckTime()",60000);
 var timeEl = document.querySelector('#time');
+var playerEl = document.getElementById("player");
+var saveButton = document.getElementById("save");
+var hiscnameEl = document.getElementById("hiscname");
+var highscoreEl = document.getElementById("highscore");
+var highscoreEl = localStorage.highscore;
+var hiscnameEl = localStorage.hiscname;
+var displayplayerEl = document.getElementById("displayname");
+
+localStorage.setItem("score", "0");
+localStorage.setItem("hiscname", "nobody");
+localStorage.setItem("highscore", "0");
+
+saveButton.addEventListener("click", function() {
+    
+var player = {
+    playerEl: playerEl.value,
+}
+
+localStorage.setItem("player", JSON.stringify(player));
+displayplayerEl = player
+console.log(displayplayerEl)
+});
 
 function startTimer () {
 var count = 60;
 var interval = setInterval(function(){
     timeEl.textContent = count
     count--;
-  if (count <= 0){
-    clearInterval(interval); // Stopping the counter when reaching 0.
+  if (count <= -1){
+    clearInterval(interval); 
+    alert("Quiz Over, Thanks for playing!")
   }
 }, 1000);
 }
@@ -60,7 +64,7 @@ const Questions = [{
 },
 {
     id: 2,
-    q: "What is the fastest Mustang",
+    q: "What is the fastest Mustang?",
     a: [{ text: "Boss 429", isCorrect: false },
         { text: "Mach 1", isCorrect: false },
         { text: "GT500", isCorrect: true },
@@ -69,7 +73,7 @@ const Questions = [{
 },
 {
     id: 3,
-    q: "What is the fastest Mustang",
+    q: "What is the fastest Mustang?",
     a: [{ text: "Boss 429", isCorrect: false },
         { text: "Mach 1", isCorrect: false },
         { text: "GT500", isCorrect: true },
@@ -78,7 +82,7 @@ const Questions = [{
 },
 {
     id: 4,
-    q: "Where was the Mustang introduced",
+    q: "Where was the Mustang introduced?",
     a: [{ text: "Detroit", isCorrect: false },
         { text: "Washington", isCorrect: false },
         { text: "New York", isCorrect: true },
@@ -87,7 +91,7 @@ const Questions = [{
 },
 {   
     id: 5,
-    q: "What is the best color",
+    q: "What is the best color?",
     a: [{ text: "red", isCorrect: false },
         { text: "blue", isCorrect: false },
         { text: "all", isCorrect: true },
@@ -96,7 +100,7 @@ const Questions = [{
 },
 {
     id: 6,
-    q: "How many people fit in a Mustang",
+    q: "How many people fit in a Mustang?",
     a: [{ text: "7", isCorrect: false },
         { text: "1-6", isCorrect: false },
         { text: "1-4", isCorrect: true },
@@ -105,16 +109,16 @@ const Questions = [{
 },
 {
     id: 7,
-    q: "What car is better than a Mustang",
+    q: "What car is better than a Mustang?",
     a: [{ text: "Camaro", isCorrect: false },
-        { text: "Chalennger", isCorrect: false },
+        { text: "Challenger", isCorrect: false },
         { text: "None!", isCorrect: true },
         { text: "Audi", isCorrect: false }
     ]
 },
 {
     id: 8,
-    q: "What version is better of the Mustang",
+    q: "What version is better of the Mustang?",
     a: [{ text: "Convertible", isCorrect: false },
         { text: "Coupe", isCorrect: false },
         { text: "All of them!", isCorrect: true },
@@ -123,7 +127,7 @@ const Questions = [{
 },
 {
     id: 9,
-    q: "How many cylinders does a Mustang have",
+    q: "How many cylinders does a Mustang have?",
     a: [{ text: "4", isCorrect: false },
         { text: "6", isCorrect: false },
         { text: "All plus electric", isCorrect: true },
@@ -132,7 +136,7 @@ const Questions = [{
 },
 {
     id: 10,
-    q: "Who shold own a Mustang",
+    q: "Who should own a Mustang?",
     a: [{ text: "Old people", isCorrect: false },
         { text: "Young people", isCorrect: false },
         { text: "Everyone", isCorrect: true },
@@ -213,7 +217,7 @@ op4.addEventListener("click", () => {
     op4.style.backgroundColor = "lightgoldenrodyellow";
     selected = op4.value;
 })
-
+}
 // Grabbing the evaluate button
 const evaluate = document.getElementsByClassName("evaluate");
 
@@ -222,18 +226,26 @@ evaluate[0].addEventListener("click", () => {
     if (selected == "true") {
         result[0].innerHTML = "True";
         result[0].style.color = "green";
-    } else {
+        localStorage.score >= 0(localStorage.score ++);
+   
+    } else if
+        (selected == "false") {
         result[0].innerHTML = "False";
         result[0].style.color = "red";
-    }
-})
+        timeEl -5;
+    }})
+
+if (localStorage.score.value > localStorage.highscore.value) {
+    localStorage.highscoreEl.push(localStorage.score)
+    hiscnameEl = player
+} else {
+    hiscnameEl = localStorage.hiscname.value;
+    highscoreEl = localStorage.highscore.value;
 }
 
-function endquiz () {
-    clearInterval(timer);
-
-
-}
+// function endquiz () {
+//     clearInterval(timer);
+// }
     
     if (start) {
 iterate("0");
@@ -244,11 +256,8 @@ const next = document.getElementsByClassName('next')[0];
 var id = 0;
 
 next.addEventListener("click", () => {
-start = false;
  if (id < 10) {
     id++;
     iterate(id);
     console.log(id);
-}
-
-})
+ }})
